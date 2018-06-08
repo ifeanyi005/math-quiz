@@ -9,7 +9,9 @@
     </div>
         <div class="row">
       <div class="col-8 offset-2">
-         <component :is="mode" @answered="answered($event)" @confirmed="mode = 'app-questions'"></component>
+          <transition name="flip" mode="out-in">
+            <component :is="mode" @answered="answered($event)" @confirmed="mode = 'app-questions'"></component>
+          </transition>
       </div>
     </div>
   </div>
@@ -43,4 +45,32 @@ export default {
 
 <style>
 
+
+.flip-enter-active{
+  animation: flip-in 0.5s ease-out forwards;
+}
+
+
+.flip-leave-active {
+  animation: flip-out 0.5s ease-out forwards;
+}
+
+@keyframes flip-out {
+  from {
+    transform: rotateX(0deg)
+  }
+  to {
+    transform: rotateX(90deg)
+  }
+
+}
+
+@keyframes flip-in {
+  from {
+    transform: rotateX(90deg)
+  }
+  to {
+    transform: rotateX(0deg)
+  }
+}
 </style>
