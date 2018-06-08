@@ -9,7 +9,7 @@
     </div>
         <div class="row">
       <div class="col-8 offset-2">
-          <transition name="flip" mode="out-in">
+          <transition  name="flip" mode="out-in">
             <component :is="mode" @answered="answered($event)" @confirmed="mode = 'app-questions'"></component>
           </transition>
       </div>
